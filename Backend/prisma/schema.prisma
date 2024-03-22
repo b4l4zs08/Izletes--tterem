@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id          Int        @id @default(autoincrement())
+  nev         String
+  email       String     @unique
+  telefonszam String
+  cim         String
+  jelszo      String
+  rendelesek  rendeles[]
+
+  @@map("felhasznalok")
+}
+
+model etelek {
+  id        Int        @id @default(autoincrement())
+  ar        Int
+  kategoria String
+  leiras    String
+  nev       String
+  rendeles  rendeles[]
+
+  @@map("etelek")
+}
+
+model rendeles {
+  id             Int        @id @default(autoincrement())
+  ar             Int
+  datum          DateTime   @default(now())
+  etelid         Int
+  mennyiseg      Int        @default(1)
+  felhasznalo_id Int
+  megjegyzes     String
+  statusz String @default("Felvéve")
+  etelek         etelek     @relation(fields: [etelid], references: [id])
+  felhasznalok   users      @relation(fields: [felhasznalo_id], references: [id])
+  velemeny       velemeny[]
+
+  @@index([etelid], map: "rendelesek_etelid_fkey")
+  @@index([felhasznalo_id], map: "rendelesek_felhasznalo_id_fkey")
+  @@map("rendelesek")
+}
+
+model velemeny {
+  id          Int      @id @default(autoincrement())
+  megjegyzes  String
+  rendeles_id Int
+  rendeles    rendeles @relation(fields: [rendeles_id], references: [id])
+
+  @@index([rendeles_id], map: "velemenyek_rendeles_id_fkey")
+  @@map("velemenyek")
+}

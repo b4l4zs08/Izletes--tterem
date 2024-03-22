@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="../myprfil.css">
+</head>
+
+<body>
+    <div id="profile" class="profile-card">
+        <div class="relative ml-3">
+            <div>
+                <span class="absolute -inset-1.5"></span>
+                <span class="sr-only"></span>
+                </button>
+            </div>
+            <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                <a href="../weboldalam.html" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                    id="user-menu-item-0">Főoldal</a>
+            </div>
+        </div>
+
+        <div class="profile-picture">
+            <img src="../acces/user.png" alt="Profile picture">
+
+        </div>
+
+        <table id="sajatuser">
+            <tr>
+                <th>Név:</th>
+
+            </tr>
+            <tr>
+                <td><input class="post-title-input" id="usernames" disabled type="text" placeholder="Felhaszáló"></td>
+            </tr>
+        </table>
+
+        <table id="sajatuser">
+            <tr>
+                <th>E-mail:</th>
+            </tr>
+            <tr>
+                <td><input class="post-title-input" id="email" disabled type="text" placeholder="E-mail"></label></td>
+            </tr>
+        </table>
+
+
+        <table id="sajatuser">
+            <tr>
+                <th>Telefonszám</th>
+            </tr>
+            <tr>
+                <td><input class="post-title-input" id="telefonszam" disabled type="text"
+                        placeholder="Telefonszám"></label></td>
+            </tr>
+        </table>
+
+        <table id="sajatuser">
+            <tr>
+                <th>Lakcíme</th>
+            </tr>
+            <tr>
+                <td><input class="post-title-input" id="lakcime" disabled type="text" placeholder="Lakcíme"></label></td>
+            </tr>
+        </table>
+
+        <div class="post">
+            <div class="post-header">
+                <h2 class="post-title">Rendeléseid:</h2>
+            </div>
+            <p class="post-content">
+                <div class="modalOverlay"></div>
+                <div id="orderHistory"></div>
+            </p>
+            <div class="post-actions">
+            </div>
+        </div>
+    </div>
+    <script>
+        const username = document.querySelector("#usernames");
+        const email = document.querySelector("#email");
+        const telefonszam = document.querySelector("#telefonszam");
+        const cim = document.querySelector("#lakcime");
+        var orderHistory = document.getElementById("orderHistory");
+        const token = JSON.parse(localStorage.getItem('userToken'))
+        var felhasznalo_id = null;
+        const feltoltes = async () => {
+            const felhasznalokereses = async () => {
+                const whoami = await fetch("http://localhost:8000/user/me", {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "authorization": `Bearer ${token}`
+                    }
+                })
+                const en = await whoami.json();
+                username.value = en.nev;
+                email.value = en.email;
+                telefonszam.value = en.telefonszam;
+                cim.value = en.cim;
+                felhasznalo_id = en.id;
+
+            }
+
+
+            await felhasznalokereses()
+            async function updateOrderHistory() {
+                orderHistory.innerHTML = "";
+                const response = await fetch("http://localhost:8000/rendeles/getRendelesek")
+                const data = await response.json()
+                orderHistory.innerHTML = " <br>"
+                for (let i = 0; i < data.length; i++) {
+                    if (data[i].felhasznalo_id == felhasznalo_id) {
+                        orderHistory.innerHTML +=
+                            `
+    ${data[i].etelek.nev}   ${data[i].etelek.ar}Ft ${data[i].mennyiseg} DB <br> 
+      `
+                    }
+                }
+            }
+            updateOrderHistory()
+        }
+        feltoltes()
+    </script>
+</body>
+
+</html>

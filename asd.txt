@@ -1,0 +1,9 @@
+kartya
+https://tw-elements.com/docs/standard/components/cards/
+
+
+tailwind
+https://tailwindcss.com/docs/width
+
+
+express js , prisma , mysql

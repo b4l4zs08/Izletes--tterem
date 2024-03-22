@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css">
+  <title>Vélemények</title>
+</head>
+
+<body>
+  <style>
+    .post-form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .post-form input,
+    .post-form textarea {
+      margin-bottom: 5px;
+    }
+
+    .post {
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .post-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .success-message {
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: #d4edda;
+      border: 1px solid #c3e6cb;
+      border-radius: 5px;
+      color: #155724;
+    }
+
+    .post-form {
+      display: flex;
+      margin-bottom: 20px;
+    }
+
+    .post-input {
+      flex-grow: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+
+    .post-button {
+      background-color: #0095ff;
+      border: none;
+      color: #fff;
+      font-size: 14px;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .posts-container {
+      width: 100%;
+      padding: 20px;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+    }
+
+    .post {
+      width: 100%;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .post-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .post-header img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 10px;
+    }
+
+    .post-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .username {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .time {
+      font-size: 14px;
+      color: #888;
+    }
+
+    .post-content {
+      margin-bottom: 10px;
+    }
+
+    .post-content p {
+      margin: 0;
+    }
+
+    .post-footer {
+      display: flex;
+      align-items: center;
+    }
+
+    .like-button {
+      background-color: transparent;
+      border: none;
+      color: #0095ff;
+      font-size: 14px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .comment-input {
+      flex-grow: 1;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      margin-right: 10px;
+    }
+
+    .comment-button {
+      background-color: #0095ff;
+      border: none;
+      color: #fff;
+      font-size: 14px;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 1em;
+      text-align: center;
+    }
+
+    .container {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+
+    .bgimg {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image: url("../acces/pizzaaa.jpg");
+      min-height: 90%;
+    }
+
+
+    section {
+      padding: 2em;
+      margin: 2em 0;
+      background-color: white;
+      color: #333;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+   <nav class="bg-gray-800">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="relative flex h-16 items-center justify-between">
+        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+        
+          <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+            <span class="absolute -inset-0.5"></span>
+            
+            
+            <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+            
+            <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+          <div class="flex flex-shrink-0 items-center">
+            <img class="h-8 w-auto" src="../acces/izletesetterem.png" alt="etteremlogo">
+          </div>
+          <div class="hidden sm:ml-6 sm:block">
+            <div class="flex space-x-4">
+              <a href="./rollunk.html" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Rólunk</a>
+              <a href="../weboldalam.html" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Főoldal</a>
+            </div>
+          </div>
+        </div>
+         
+          <div class="relative ml-3">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="min-w-screen min-h-screen bg-gray-50 flex items-center justify-center py-5">
+    <div class="w-full bg-white border-t border-b border-gray-200 px-5 py-16 md:py-24 text-gray-800">
+      <div class="w-full max-w-6xl mx-auto">
+        <div class="text-center max-w-xl mx-auto">
+          <div class="w3-top w3-hide-small">
+          </div>
+          <h1 class="text-6xl md:text-7xl font-bold mb-5 text-gray-600">Amit ügyfeleink mondanak<br></h1>
+          <h3 class="text-xl mb-5 font-light"></h3>
+          <div class="text-center mb-10">
+            <span class="inline-block w-1 h-1 rounded-full bg-indigo-500 ml-1"></span>
+            <span class="inline-block w-3 h-1 rounded-full bg-indigo-500 ml-1"></span>
+            <span class="inline-block w-40 h-1 rounded-full bg-indigo-500"></span>
+            <span class="inline-block w-3 h-1 rounded-full bg-indigo-500 ml-1"></span>
+            <span class="inline-block w-1 h-1 rounded-full bg-indigo-500 ml-1"></span>
+          </div>
+        </div>
+
+        <div class="-mx-3 md:flex items-start">
+          <div class="px-3 md:w-1/3">
+            <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
+              <div class="w-full flex mb-4 items-center">
+                <div class="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
+                  <img src="https://i.pravatar.cc/100?img=1" alt="">
+                </div>
+                <div class="flex-grow pl-3">
+                  <h6 class="font-bold text-sm uppercase text-gray-600">Kis Kata</h6>
+                </div>
+              </div>
+              <div class="w-full">
+                <p class="text-sm leading-tight"><span
+                    class="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>Ez az étel valóban kiváló
+                  választás volt! Az ízek tökéletesen harmonizálnak egymással, és a friss hozzávalók érezhetően
+                  minőségiek. Az étterem kiszolgálása is kifogástalan, gyors és barátságos volt. Mindenképpen ajánlom
+                  ezt az ételt azoknak, akik szeretnének egy különleges gasztronómiai élményben részesülni!
+
+                  <span class="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span>
+                </p>
+              </div>
+            </div>
+            <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
+              <div class="w-full flex mb-4 items-center">
+                <div class="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
+                  <img src="https://i.pravatar.cc/100?img=2" alt="">
+                </div>
+                <div class="flex-grow pl-3">
+                  <h6 class="font-bold text-sm uppercase text-gray-600">Kovács Balázs</h6>
+                </div>
+              </div>
+              <div class="w-full">
+                <p class="text-sm leading-tight"><span
+                    class="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>Ez a pizza fantasztikus!
+                  Tökéletesen ropogós a tészta, a szósz íze intenzív, és a feltétek frissek és ízletesek. Egyszerűen
+                  imádom!<span class="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span></p>
+              </div>
+            </div>
+          </div>
+          <div class="px-3 md:w-1/3">
+            <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
+              <div class="w-full flex mb-4 items-center">
+                <div class="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
+                  <img src="https://i.pravatar.cc/100?img=3" alt="">
+                </div>
+                <div class="flex-grow pl-3">
+                  <h6 class="font-bold text-sm uppercase text-gray-600"> Varga Máté</h6>
+                </div>
+              </div>
+              <div class="w-full">
+                <p class="text-sm leading-tight"><span
+                    class="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>Ez a vegán zöldséges curry
+                  kókusztejjel egyszerűen isteni! Az ízek tökéletesen egyensúlyban vannak, a zöldségek frissek, és a
+                  kókusztej ad egy fantasztikus krémes textúrát. Kifejezetten ajánlom azoknak, akik szeretnének egy
+                  ízletes és egészséges ételt fogyasztani!<span
+                    class="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span></p>
+              </div>
+            </div>
+            <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
+              <div class="w-full flex mb-4 items-center">
+                <div class="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
+                  <img src="https://i.pravatar.cc/100?img=4" alt="">
+                </div>
+                <div class="flex-grow pl-3">
+                  <h6 class="font-bold text-sm uppercase text-gray-600"> Nagy András</h6>
+                </div>
+              </div>
+              <div class="w-full">
+                <p class="text-sm leading-tight"><span
+                    class="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>Ez a steak egyszerűen
+                  tökéletes! A sütőburgonya ropogós, a zöldbabok frissek, és maga a hús is tökéletesen elkészítve. Egy
+                  ízletes és kielégítő étel!<span
+                    class="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span></p>
+              </div>
+            </div>
+          </div>
+          <div class="px-3 md:w-1/3">
+            <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
+              <div class="w-full flex mb-4 items-center">
+                <div class="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
+                  <img src="https://i.pravatar.cc/100?img=5" alt="">
+                </div>
+                <div class="flex-grow pl-3">
+                  <h6 class="font-bold text-sm uppercase text-gray-600">Szabó Petra </h6>
+                </div>
+              </div>
+              <div class="w-full">
+                <p class="text-sm leading-tight"><span
+                    class="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>Sajnálatosan az a vegán
+                  gyros, amit kipróbáltam, elmaradt az elvárásaimtól. Az íz semleges volt, a textúra pedig kissé
+                  szokatlan és ragacsos. A fűszerezés sem volt eléggé intenzív, így hiányzott belőle az az ütős
+                  karakter, ami egy jó gyrosnak jellemző. Talán más ízlésű embereknek tetszhet, de nekem sajnos nem jött
+                  be.<span class="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span></p>
+              </div>
+            </div>
+            <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
+              <div class="w-full flex mb-4 items-center">
+                <div class="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
+                  <img src="https://i.pravatar.cc/100?img=6" alt="">
+                </div>
+                <div class="flex-grow pl-3">
+                  <h6 class="font-bold text-sm uppercase text-gray-600"> Tóth Márk</h6>
+                </div>
+              </div>
+              <div class="w-full">
+                <p class="text-sm leading-tight"><span
+                    class="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>Ez a garnélarák és quinoa
+                  saláta igazi ízorgia! A frissességét és az összetett ízvilágát nagyon szerettem. A rákok tökéletesen
+                  párosultak a quinoa különleges állagával, és az egész étel egészséges és kielégítő volt. Ajánlom
+                  mindazoknak, akik szeretik az ínycsiklandó és tápláló salátákat!<span
+                    class="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="post-form">
+    <input class="post-title-input" id="username" disabled type="text" placeholder="Felhaszáló">
+    <textarea class="post-content-input" placeholder="Üzenet"></textarea>
+    <button class="post-button" onclick="checkLogin()">Posztolás</button>
+  </div>
+  <div class="posts-container"></div>
+
+  <script>
+    const username = document.querySelector("#username");
+    const token = JSON.parse(localStorage.getItem('userToken'))
+    const felhasznalokereses = async () => {
+      console.log(token)
+      const whoami = await fetch("http://localhost:8000/user/me", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "authorization": `Bearer ${token}`
+        }
+      })
+      const en = await whoami.json();
+      console.log(en);
+      username.value = en.nev;
+
+    }
+
+    felhasznalokereses()
+
+    function checkLogin() {
+      let isLoggedIn = false;
+      if (token) {
+        isLoggedIn = true;
+      }
+      if (isLoggedIn) {
+        console.log("Sikeresen Posztoltál");
+        alert("Sikeres posztolás!");
+      } else {
+        console.log("Be kell jelentkezned");
+        alert("Be kell jelentkezned a posztoláshoz!");
+      }
+    }
+
+
+    const postForm = (() => {
+      const postFormElement = document.querySelector('.post-form');
+      const postTitleInput = document.querySelector('.post-title-input');
+      const postContentInput = document.querySelector('.post-content-input');
+      const postButton = document.querySelector('.post-button');
+
+
+      postButton.addEventListener('click', () => {
+        if (postTitleInput.value && postContentInput.value) {
+          const newPost = createPost(postTitleInput.value, postContentInput.value);
+          const postsContainer = document.querySelector('.posts-container');
+          postsContainer.appendChild(newPost);
+
+          postTitleInput.value = '';
+          postContentInput.value = '';
+
+          displaySuccessMessage(() => {
+            displayPost(postTitleInput.value, postContentInput.value, 'http://127.0.0.1:5500/frontend/index.html#Fooldal');
+          });
+        }
+      });
+
+      return {
+        postButton: postButton,
+      };
+    })();
+
+    const createPost = (title, content) => {
+      const newPost = document.createElement('div');
+      newPost.classList.add('post');
+
+      const postTitle = document.createElement('div');
+      postTitle.classList.add('post-title');
+      postTitle.textContent = title;
+      newPost.appendChild(postTitle);
+
+      const postContent = document.createElement('div');
+      postContent.textContent = content;
+      newPost.appendChild(postContent);
+
+      return newPost;
+    };
+
+    const displaySuccessMessage = (callback) => {
+      const successMessage = document.createElement('div');
+      successMessage.classList.add('success-message');
+      successMessage.textContent = 'Sikeresen posztoltál!';
+
+      const postsContainer = document.querySelector('.posts-container');
+      postsContainer.insertBefore(successMessage, postsContainer.firstChild);
+
+      setTimeout(() => {
+        successMessage.remove();
+        if (callback) {
+          return;
+        }
+      }, 3000);
+    };
+
+    const displayPost = (title, content, redirectUrl) => {
+      const mainPostsContainer = document.querySelector('.main-posts-container');
+      const newPost = createPost(title, content);
+      mainPostsContainer.appendChild(newPost);
+
+      if (redirectUrl) {
+        setTimeout(() => {
+          window.location.href = redirectUrl;
+        }, 3000);
+      }
+    };
+
+
+  </script>
+</body>
+
+</html>

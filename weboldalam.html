@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./webcss.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script defer src="./webjava.js"></script>
+  <title>Project</title>
+</head>
+
+<body>
+  <nav class="bg-gray-800">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="relative flex h-16 items-center justify-between">
+        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+        
+          <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+            <span class="absolute -inset-0.5"></span>
+            
+            
+            <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+            
+            <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+          <div class="flex flex-shrink-0 items-center">
+            <img class="h-8 w-auto" src="../Project/acces/izletesetterem.png" alt="etteremlogo">
+          </div>
+          <div class="hidden sm:ml-6 sm:block">
+            <div class="flex space-x-4">
+              <button id="openModalBtn">Ételrendelés</button>  
+              <a href="./pages/rollunk.html" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Rólunk</a>
+              <a href="./pages/velemeny.html" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Vélemény</a>
+              <a href="./pages/login.html" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Bejelentkezés</a>
+            </div>
+          </div>
+        </div>
+         
+          <div class="relative ml-3">
+            <div>
+            <button type="button" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                <span class="absolute -inset-1.5"></span>
+                <span class="sr-only">Open user menu</span>
+               <img class="h-8 w-8 rounded-full" src="./acces/user.png" alt="Ön"  >
+              </button>
+            </div>
+  
+            <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+              
+              <a href="./pages/myprofile.html" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Ön</a>
+              <a  class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2"><button id="logout">Kijelentkezes</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="myModal" class="modal">
+    <span class="close" id="closeModalBtn">×</span>
+    <div class="modal-content">
+      <h2>Válassz ételt:</h2>
+      <form id="orderForm">
+        <label for="customerName">Rendelő neve:</label>
+        <input type="text" id="customerName" placeholder="HALo" class="text-gray-400" readonly disabled>
+
+        <label for="foodList">Ételek:</label>
+
+        <table id="foodList" class="text-center">
+        </table>
+        <button type="button" id="placeOrderBtn">Rendelés</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+  <div class="container">
+    <header class="bgimg w3-display-container grayscale-min" id="home">
+      <div class="display-bottomleft padding">
+        <span class="tag xlarge">NYITVATARTÁS:</span>
+        <p>
+          Hétfő - Péntek: 10.00 - 21:30<br>
+          Szombat - Vasárnap: 10.00 - 22.00
+        </p>
+      </div>
+      <div class="display-middle center">
+        <span class="text-white hide-small" style="font-size:100px"><br>Ízletes Étterem</span>
+        <span class="text-white hide-large w3-hide-medium" style="font-size:60px"><b><br></b></span>
+        <p><a href="#menu" class="button xxlarge black">Étlap</a></p>
+      </div>
+    </header>
+
+    <section>
+      <div class="Fooldal" id="fooldal">
+        <div class="containers">
+          <div class="mySlides">
+            <div class="numbertext">1 / 6</div>
+            <img src="./acces/res.jpg" style="width:100%">
+          </div>
+
+          <div class="mySlides">
+            <div class="numbertext">2 / 6</div>
+            <img src="./acces/Penne all'Arrabbiata.jpg" style="width:100%">
+          </div>
+
+          <div class="mySlides">
+            <div class="numbertext">3 / 6</div>
+            <img src="./acces/Spaghetti Carbonara.jpg" style="width:100%">
+          </div>
+
+          <div class="mySlides">
+            <div class="numbertext">4 / 6</div>
+            <img src="./acces/Margherita Pizza.jpg" style="width:100%">
+          </div>
+
+          <div class="mySlides">
+            <div class="numbertext">5 / 6</div>
+            <img src="./acces/PadThaitofuvalésrizstésztával.jpg" style="width:100%">
+          </div>
+
+          <div class="mySlides">
+            <div class="numbertext">6 / 6</div>
+            <img src="./acces/Steak sült burgonyával és zöldbabokkal.jpg" style="width:100%">
+          </div>
+
+
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+
+          <div class="caption-container">
+            <p id="caption"></p>
+          </div>
+
+
+          <div class="row">
+            <div class="column">
+              <img class="demo cursor" src="./acces/res.jpg" style="width:100%" onclick="currentSlide(1)" alt="Étterem">
+            </div>
+            <div class="column">
+              <img class="demo cursor" src="./acces/Penne all'Arrabbiata.jpg" style="width:100%"
+                onclick="currentSlide(2)" alt="Penne all'Arrabbiata">
+            </div>
+            <div class="column">
+              <img class="demo cursor" src="./acces/Spaghetti Carbonara.jpg" style="width:100%"
+                onclick="currentSlide(3)" alt="Spaghetti Carbonara">
+            </div>
+            <div class="column">
+              <img class="demo cursor" src="./acces/Margherita Pizza.jpg" style="width:100%" onclick="currentSlide(4)"
+                alt="Margherita Pizza">
+            </div>
+            <div class="column">
+              <img class="demo cursor" src="./acces/PadThaitofuvalésrizstésztával.jpg" style="width:100%"
+                onclick="currentSlide(5)" alt="Pad Thai tofuval és rizstésztával">
+            </div>
+            <div class="column">
+              <img class="demo cursor" src="./acces/Steak sült burgonyával és zöldbabokkal.jpg" style="width:100%"
+                onclick="currentSlide(6)" alt="Steak sült burgonyával és zöldbabokkal">
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
+    </section>
+    <section id="menu">
+      <strong>
+        <h2>Étlap:</h2>
+      </strong>
+      <div class="etlap-content">
+        <div class="etlap-header">
+        </div>
+        <div class=" grid grid-cols-3 gap-5 p-5">
+          <div
+            class=" h-96 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            <div class="relative overflow-hidden bg-cover bg-no-repeat" data-te-ripple-init
+              data-te-ripple-color="light">
+              <img class="rounded-t-lg" src="./acces/Bolognese.jpg" alt="Lasagne Bolognese kép" />
+              <a href="#!">
+                <div
+                  class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
+                </div>
+              </a>
+            </div>
+            <div class="p-6">
+              <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                Ár: 2500 Ft
+              </h5>
+              <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                Olasz Lasagne Bolognese
+              </p>
+            </div>
+          </div>
+
+          <div
+            class=" h-96 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            <div class="relative overflow-hidden bg-cover bg-no-repeat" data-te-ripple-init
+              data-te-ripple-color="light">
+              <img class="rounded-t-lg" src="./acces/Spaghetti Carbonara.jpg" alt="Spaghetti Carbonara kép" />
+              <a href="#!">
+                <div
+                  class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
+                </div>
+              </a>
+            </div>
+            <div class="p-6">
+              <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                Ár: 2200 Ft
+              </h5>
+              <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                Spaghetti Carbonara
+              </p>
+            </div>
+          </div>
+
+          <div
+            class=" h-96 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            <div class="relative overflow-hidden bg-cover bg-no-repeat" data-te-ripple-init
+              data-te-ripple-color="light">
+              <img class="rounded-t-lg" src="./acces/Penne all'Arrabbiata.jpg" alt="Penne all'Arrabbiata kép" />
+              <a href="#!">
+                <div
+                  class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
+                </div>
+              </a>
+            </div>
+            <div class="p-6">
+              <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                Ár: 1900 Ft
+              </h5>
+              <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                Penne all'Arrabbiata
+              </p>
+            </div>
+          </div>
+
+
+          <div
+            class=" h-96 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            <div class="relative overflow-hidden bg-cover bg-no-repeat" data-te-ripple-init
+              data-te-ripple-color="light">
+              <img class="rounded-t-lg" src="./acces/Tortellini Panna e Prosciutto.jpg"
+                alt="Tortellini Panna e Prosciutto kép" />
+              <a href="#!">
+                <div
+                  class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
+                </div>
+              </a>
+            </div>
+            <div class="p-6">
+              <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                Ár: 2400 Ft
+              </h5>
+              <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                Tortellini Panna e Prosciutto
+              </p>
+            </div>
+          </div>
+
+
+          <div
+            class=" h-96 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            <div class="relative overflow-hidden bg-cover bg-no-repeat" data-te-ripple-init
+              data-te-ripple-color="light">
+              <img class="rounded-t-lg" src="./acces/Fettuccine Alfredo.jpg" alt="Fettuccine Alfredo kép" />
+              <a href="#!">
+                <div
+                  class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
+                </div>
+              </a>
+            </div>
+            <div class="p-6">
+              <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                Ár: 1890 Ft
+              </h5>
+              <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                Fettuccine Alfredo
+              </p>
+            </div>
+          </div>
+
+          <div
+            class=" h-96 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            <div class="relative overflow-hidden bg-cover bg-no-repeat" data-te-ripple-init
+              data-te-ripple-color="light">
+              <img class="rounded-t-lg" src="./acces/Margherita Pizza.jpg" alt="Margherita Pizza kép" />
+              <a href="#!">
+                <div
+                  class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
+                </div>
+              </a>
+            </div>
+            <div class="p-6">
+              <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                Ár:2800 Ft
+              </h5>
+              <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                Margherita Pizza
+              </p>
+            </div>
+          </div>
+
+          <div
+            class=" h-96 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            <div class="relative overflow-hidden bg-cover bg-no-repeat" data-te-ripple-init
+              data-te-ripple-color="light">
+              <img class="rounded-t-lg" src="./acces/Pepperoni Pizza.jpg" alt="Pepperoni Pizza kép" />
+              <a href="#!">
+                <div
+                  class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
+                </div>
+              </a>
+            </div>
+            <div class="p-6">
+              <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                Ár:2900 Ft
+              </h5>
+              <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                Pepperoni PizzaMargherita Pizza
+              </p>
+            </div>
+          </div>
+
+          <div
+            class=" h-96 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            <div class="relative overflow-hidden bg-cover bg-no-repeat" data-te-ripple-init
+              data-te-ripple-color="light">
+              <img class="rounded-t-lg" src="./acces/BBQ Chicken Pizza.jpg" alt="BBQ Chicken Pizza kép" />
+              <a href="#!">
+                <div
+                  class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
+                </div>
+              </a>
+            </div>
+            <div class="p-6">
+              <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                Ár:3200 Ft
+              </h5>
+              <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                BBQ Chicken Pizza
+              </p>
+            </div>
+          </div>
+
+
+          <div
+            class=" h-96 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            <div class="relative overflow-hidden bg-cover bg-no-repeat" data-te-ripple-init
+              data-te-ripple-color="light">
+              <img class="rounded-t-lg" src="./acces/Capricciosa Pizza.jpg" alt="Capricciosa Pizza kép" />
+              <a href="#!">
+                <div
+                  class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
+                </div>
+              </a>
+            </div>
+            <div class="p-6">
+              <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                Ár:3100 Ft
+              </h5>
+              <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                Capricciosa Pizza (sonka, gomba, articsóka)
+              </p>
+            </div>
+          </div>
+
+          <div
+            class=" h-96 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            <div class="relative overflow-hidden bg-cover bg-no-repeat" data-te-ripple-init
+              data-te-ripple-color="light">
+              <img class="rounded-t-lg" src="./acces/Meat Lovers Pizza.jpg" alt="Meat Lovers Pizza kép" />
+              <a href="#!">
+                <div
+                  class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
+                </div>
+              </a>
+            </div>
+            <div class="p-6">
+              <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                Ár:3500 Ft
+              </h5>
+              <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                Meat Lovers Pizza
+              </p>
+            </div>
+          </div>
+
+
+          <div
+            class=" h-96 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            <div class="relative overflow-hidden bg-cover bg-no-repeat" data-te-ripple-init
+              data-te-ripple-color="light">
+              <img class="rounded-t-lg" src="./acces/Vegan Margherita Pizza.jpg" alt="Vegan Margherita Pizza kép" />
+              <a href="#!">
+                <div
+                  class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
+                </div>
+              </a>
+            </div>
+            <div class="p-6">
+              <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                Ár:3600 Ft
+              </h5>
+              <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                Veggie Supreme Pizza
+              </p>
+            </div>
+          </div>
+
+
+          <div
+            class=" h-96 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            <div class="relative overflow-hidden bg-cover bg-no-repeat" data-te-ripple-init
+              data-te-ripple-color="light">
+              <img class="rounded-t-lg" src="./acces/PadThaitofuvalésrizstésztával.jpg"
+                alt="Pad Thai tofuval és rizstésztával kép" />
+              <a href="#!">
+                <div
+                  class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
+                </div>
+              </a>
+            </div>
+            <div class="p-6">
+              <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                Ár: 1900 Ft
+              </h5>
+              <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                Pad Thai tofuval és rizstésztával
+              </p>
+            </div>
+          </div>
+
+          <div
+            class=" h-96 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            <div class="relative overflow-hidden bg-cover bg-no-repeat" data-te-ripple-init
+              data-te-ripple-color="light">
+              <img class="rounded-t-lg" src="./acces/Vegán zöldséges curry kókusztejjel.jpg"
+                alt="Vegán zöldséges curry kókusztejjel kép" />
+              <a href="#!">
+                <div
+                  class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
+                </div>
+              </a>
+            </div>
+            <div class="p-6">
+              <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                Ár:1500 Ft
+              </h5>
+              <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                Vegán zöldséges curry kókusztejjel
+              </p>
+            </div>
+          </div>
+
+
+          <div
+            class=" h-96 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            <div class="relative overflow-hidden bg-cover bg-no-repeat" data-te-ripple-init
+              data-te-ripple-color="light">
+              <img class="rounded-t-lg" src="./acces/Steak sült burgonyával és zöldbabokkal.jpg"
+                alt="Steak sült burgonyával és zöldbabokkal kép" />
+              <a href="#!">
+                <div
+                  class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
+                </div>
+              </a>
+            </div>
+            <div class="p-6">
+              <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                Ár:2650 Ft
+              </h5>
+              <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                Steak sült burgonyával és zöldbabokkal
+              </p>
+            </div>
+          </div>
+
+
+          <div
+            class=" h-96 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            <div class="relative overflow-hidden bg-cover bg-no-repeat" data-te-ripple-init
+              data-te-ripple-color="light">
+              <img class="rounded-t-lg" src="./acces/Sertésszelet borral párolva és párolt zöldségekkel.jpg"
+                alt="Sertésszelet borral párolva és párolt zöldségekkel kép" />
+              <a href="#!">
+                <div
+                  class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
+                </div>
+              </a>
+            </div>
+            <div class="p-6">
+              <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                Ár:2490 Ft
+              </h5>
+              <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                Sertésszelet borral párolva és párolt zöldségekkel
+              </p>
+            </div>
+          </div>
+
+
+          <div
+            class=" h-96 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            <div class="relative overflow-hidden bg-cover bg-no-repeat" data-te-ripple-init
+              data-te-ripple-color="light">
+              <img class="rounded-t-lg" src="./acces/Lazac filé citromos mártással és sült édesburgonyával.jpg"
+                alt="Lazac filé citromos mártással és sült édesburgonyával kép" />
+              <a href="#!">
+                <div
+                  class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
+                </div>
+              </a>
+            </div>
+            <div class="p-6">
+              <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                Ár:2700 Ft
+              </h5>
+              <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                Lazac filé citromos mártással és sült édesburgonyával
+              </p>
+            </div>
+          </div>
+
+
+          <div
+            class=" h-96 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            <div class="relative overflow-hidden bg-cover bg-no-repeat" data-te-ripple-init
+              data-te-ripple-color="light">
+              <img class="rounded-t-lg" src="./acces/Garnélarák és quinoa saláta.jpg"
+                alt="Garnélarák és quinoa saláta kép" />
+              <a href="#!">
+                <div
+                  class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
+                </div>
+              </a>
+            </div>
+            <div class="p-6">
+              <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                Ár:2380 Ft
+              </h5>
+              <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                Garnélarák és quinoa saláta
+              </p>
+            </div>
+          </div>
+
+
+          <div
+            class=" h-96 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            <div class="relative overflow-hidden bg-cover bg-no-repeat" data-te-ripple-init
+              data-te-ripple-color="light">
+              <img class="rounded-t-lg" src="./acces/Gyros.jpg" alt="Gyros tál kép" />
+              <a href="#!">
+                <div
+                  class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
+                </div>
+              </a>
+            </div>
+            <div class="p-6">
+              <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                Ár:2090 Ft
+              </h5>
+              <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                Gyros Tál
+              </p>
+            </div>
+          </div>
+
+
+
+
+          <div
+            class=" h-96 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            <div class="relative overflow-hidden bg-cover bg-no-repeat" data-te-ripple-init
+              data-te-ripple-color="light">
+              <img class="rounded-t-lg" src="./acces/Sajtos Gyros Tál.jpg" alt="Sajtos Gyros Tál" />
+              <a href="#!">
+                <div
+                  class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
+                </div>
+              </a>
+            </div>
+            <div class="p-6">
+              <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                Ár:2100 Ft
+              </h5>
+              <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                Sajtos Gyros Tál
+              </p>
+            </div>
+          </div>
+
+          <div
+            class=" h-96 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            <div class="relative overflow-hidden bg-cover bg-no-repeat" data-te-ripple-init
+              data-te-ripple-color="light">
+              <img class="rounded-t-lg" src="./acces/Vegán Gyros.jpg" alt="Vegán Gyros kép" />
+              <a href="#!">
+                <div
+                  class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
+                </div>
+              </a>
+            </div>
+            <div class="p-6">
+              <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                Ár:2200 Ft
+              </h5>
+              <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                Vegán Gyros
+              </p>
+            </div>
+          </div>
+
+
+
+          <div
+            class=" h-96 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            <div class="relative overflow-hidden bg-cover bg-no-repeat" data-te-ripple-init
+              data-te-ripple-color="light">
+              <img class="rounded-t-lg" src="./acces/Tavaszi tekercs.jpg" alt="Tavaszi tekercs kép" />
+              <a href="#!">
+                <div
+                  class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
+                </div>
+              </a>
+            </div>
+            <div class="p-6">
+              <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                Ár:3400 Ft
+              </h5>
+              <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                Tavaszi tekercs
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+  </div>
+  </div>
+  </section>
+
+  <div class="modalOverlay"></div>
+  </section>
+  <section id="contact">
+    <strong>
+      <p>Elérhetőségeink:</p>
+    </strong>
+    <address>
+      <p><a href="https://www.facebook.com/balazs.krepsz" class="fa fa-facebook"></a><strong>Ízletes
+          Étterem</strong><br></p>
+      <p><a href="https://www.instagram.com/b4l4zs08/" class="fa fa-instagram"></a><strong>Ízletes Étterem</strong><br>
+      </p>
+      123 Gasztronómia utca<br>
+      Városközpont<br>
+      Telefonszám: +36 1 234 5678<br>
+      E-mail: info@izletesetterem.hu
+    </address>
+    <footer>
+      <p>© 2024 Minden jog fenntartva.</p>
+    </footer>
+</body>
+
+</html>
