@@ -1,0 +1,7 @@
+index.js fájl létrehozása
+npm init -y
+npm i express cors
+npm i nodemon --save-dev
+npm i @prisma/cli
+npm i jsonwebtoken
+npm i argon2

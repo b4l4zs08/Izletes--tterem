@@ -49,7 +49,7 @@ regButton.addEventListener('click', async (e) => {
             onClick: function(){} // Callback after click
           }).showToast();
           setInterval(() => {
-            location.href = "../weboldalam.html"
+            location.href = "../pages/login.html"
           }, 5000);
     } else {
         Toastify({

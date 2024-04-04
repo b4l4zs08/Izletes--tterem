@@ -4,17 +4,13 @@ loginButton.addEventListener('click', async (e) => {
 
     e.preventDefault();
 
-    const nev = document.querySelector('#username').value;
+    
     const email = document.querySelector('#email').value;
-    const telefonszam = document.querySelector('#phonenumber').value
-    const cim = document.querySelector('#cim').value
     const jelszo = document.querySelector('#password').value;
 
     const loginForm = {
-      nev: nev,
+      
       email: email,
-      telefonszam: telefonszam,
-      cim:cim,
       jelszo: jelszo
     }
 
